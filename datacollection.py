@@ -6,7 +6,7 @@ import spacy
 import numpy as np
 from geopy.geocoders import Nominatim
 from geopy.exc import GeocoderTimedOut
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 from urllib.parse import quote_plus
 from pymongo import MongoClient
 from pymongo.server_api import ServerApi
@@ -222,3 +222,4 @@ if __name__ == "__main__":
     # Indexing the collection on Latitude and Longitude
 
     # collection.create_index([("Latitude", 1), ("Longitude", 1)])
+
