@@ -11,3 +11,4 @@ pyarrow
 spacy
 geopy
 firebase_admin
+streamlit-option-menu
