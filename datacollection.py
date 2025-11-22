@@ -12,13 +12,19 @@ from pymongo import MongoClient
 from pymongo.server_api import ServerApi
 # import certifi
 
-# Load environment variables from .env
-load_dotenv()
+# # Load environment variables from .env
+# load_dotenv()
 
-# Access them
-username = quote_plus(os.getenv("MONGO_USER"))
-password = quote_plus(os.getenv("MONGO_PASS"))
-newsapi_key = os.getenv("NEWSAPI_KEY")
+# # Access them
+# username = quote_plus(os.getenv("MONGO_USER"))
+# password = quote_plus(os.getenv("MONGO_PASS"))
+# newsapi_key = os.getenv("NEWSAPI_KEY")
+
+# Load info from st.secerts
+username = st.secrets["MONGO_USER"]
+password = st.secrets["MONGO_PASS"]
+news_api_key = st.secrets["NEWSAPI_KEY"]
+
 
 # uri =  f"mongodb+srv://{username}:{password}@disastercluster.mtjfwab.mongodb.net/?retryWrites=true&w=majority&appName=DisasterCluster"
 
@@ -214,4 +220,5 @@ if __name__ == "__main__":
         print("An error occurred:", e)
 
     # Indexing the collection on Latitude and Longitude
+
     # collection.create_index([("Latitude", 1), ("Longitude", 1)])
