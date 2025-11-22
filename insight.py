@@ -8,18 +8,22 @@ from datetime import datetime, timedelta, timezone
 from pymongo import MongoClient
 from folium.plugins import MarkerCluster  # Import MarkerCluster
 import matplotlib.pyplot as plt
-from dotenv import load_dotenv
+#from dotenv import load_dotenv
 from urllib.parse import quote_plus
 from wordcloud import WordCloud
 import plotly.express as px
 import plotly.graph_objects as go
 
-# Load environment variables from .env
-load_dotenv()
+# # Load environment variables from .env
+# load_dotenv()
 
-# Access the environment variables
-username = quote_plus(os.getenv("MONGO_USER"))
-password = quote_plus(os.getenv("MONGO_PASS"))
+# # Access the environment variables
+# username = quote_plus(os.getenv("MONGO_USER"))
+# password = quote_plus(os.getenv("MONGO_PASS"))
+
+# Load info from st.secrets
+username = st.secrets["MONGO_USER"]
+password = st.secrets["MONGO_PASS"]
 
 def main():
     uri = f"mongodb+srv://{username}:{password}@disastercluster.mtjfwab.mongodb.net/?retryWrites=true&w=majority&appName=DisasterCluster"
