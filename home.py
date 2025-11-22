@@ -13,12 +13,16 @@ from dotenv import load_dotenv
 from urllib.parse import quote_plus
 from pymongo import MongoClient
 
-# Load environment variables from .env
-load_dotenv()
+# # Load environment variables from .env
+# load_dotenv()
 
-# Access them
-username = quote_plus(os.getenv("MONGO_USER"))
-password = quote_plus(os.getenv("MONGO_PASS"))
+# # Access them
+# username = quote_plus(os.getenv("MONGO_USER"))
+# password = quote_plus(os.getenv("MONGO_PASS"))
+
+# Load info from st.secrets
+username = st.secrets["MONGO_USER"]
+password = st.secrets["MONGO_PASS"]
 
 exclude_locations = [ ] #Add Locations to exclude
 
