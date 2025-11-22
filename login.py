@@ -1,6 +1,6 @@
 import os
 import streamlit as st
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 from urllib.parse import quote_plus
 import firebase_admin
 from firebase_admin import credentials
@@ -11,17 +11,40 @@ import ssl
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
-# Load environment variables from .env
-load_dotenv()
+# # Load environment variables from .env
+# load_dotenv()
 
-# Access them
-username = quote_plus(os.getenv("MONGO_USER"))
-password = quote_plus(os.getenv("MONGO_PASS"))
-newsapi_key = os.getenv("NEWSAPI_KEY")
-email_address = os.getenv("EMAIL_ADDRESS")
-email_password = os.getenv("EMAIL_PASSWORD")
+# # Access them
+# username = quote_plus(os.getenv("MONGO_USER"))
+# password = quote_plus(os.getenv("MONGO_PASS"))
+# newsapi_key = os.getenv("NEWSAPI_KEY")
+# email_address = os.getenv("EMAIL_ADDRESS")
+# email_password = os.getenv("EMAIL_PASSWORD")
 
-cred = credentials.Certificate("firebase-key.json")
+# Load info from st.secrets
+username = st.secrets["MONGO_USER"]
+password = st.secrets["MONGO_PASS"]
+
+email_address = st.secrets["EMAIL_ADDRESS"]
+email_password = st.secrets["EMAIL_PASSWORD"]
+news_api_key = st.secrets["NEWSAPI_KEY"]
+
+# cred = credentials.Certificate("firebase-key.json")
+
+cred = credentials.Certificate({
+    "type": firebase_config["type"],
+    "project_id": firebase_config["project_id"],
+    "private_key_id": firebase_config["private_key_id"],
+    "private_key": firebase_config["private_key"],
+    "client_email": firebase_config["client_email"],
+    "client_id": firebase_config["client_id"],
+    "auth_uri": firebase_config["auth_uri"],
+    "token_uri": firebase_config["token_uri"],
+    "auth_provider_x509_cert_url": firebase_config["auth_provider_x509_cert_url"],
+    "client_x509_cert_url": firebase_config["client_x509_cert_url"],
+    "universe_domain": firebase_config["universe_domain"]
+})
+
 if not firebase_admin._apps:
     firebase_admin.initialize_app(cred)
 
