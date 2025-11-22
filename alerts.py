@@ -10,14 +10,21 @@ import ssl
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
-# Load environment variables from .env
-load_dotenv()
+# # Load environment variables from .env
+# load_dotenv()
 
-# Access them
-username = quote_plus(os.getenv("MONGO_USER"))
-password = quote_plus(os.getenv("MONGO_PASS"))
-email_address = os.getenv("EMAIL_ADDRESS")
-email_password = os.getenv("EMAIL_PASSWORD")
+# # Access them
+# username = quote_plus(os.getenv("MONGO_USER"))
+# password = quote_plus(os.getenv("MONGO_PASS"))
+# email_address = os.getenv("EMAIL_ADDRESS")
+# email_password = os.getenv("EMAIL_PASSWORD")
+
+# Load info from st.secrets
+username = st.secrets["MONGO_USER"]
+password = st.secrets["MONGO_PASS"]
+
+email_address = st.secrets["EMAIL_ADDRESS"]
+email_password = st.secrets["EMAIL_PASSWORD"]
 
 exclude_locations = [ ] #Add Locations to exclude
 
