@@ -9,7 +9,7 @@ from streamlit_javascript import st_javascript
 import plotly.express as px
 from wordcloud import WordCloud
 from datetime import datetime, timedelta, timezone
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 from urllib.parse import quote_plus
 from pymongo import MongoClient
 
